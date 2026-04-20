@@ -1,12 +1,14 @@
 {
   "name": "opsmind-ai",
   "version": "1.0.0",
-  "description": "",
-  "main": "opsmind-backend/server.js",
+  "description": "Opsmind AI - SOP and Knowledge Management Platform",
+  "main": "opsmind-backend-new/server.js",
   "scripts": {
-    "dev": "nodemon opsmind-backend/server.js",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev:backend": "cd opsmind-backend-new && npm run dev",
+    "dev:frontend": "cd opsmind-frontend && npm run dev",
+    "build": "cd opsmind-frontend && npm run build",
+    "preview": "cd opsmind-frontend && npm run preview",
+    "install:all": "npm install && cd opsmind-backend-new && npm install && cd ../opsmind-frontend && npm install"
   }, 
   "keywords": [],
   "author": "",

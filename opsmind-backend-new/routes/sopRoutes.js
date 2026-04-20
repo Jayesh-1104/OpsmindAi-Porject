@@ -1,17 +1,12 @@
 const express = require("express");
 const router = express.Router();
-
 const upload = require("../middleware/uploadMiddleware");
 const { protect, adminOnly } = require("../middleware/authmiddleware");
-const { uploadSOP } = require("../controllers/sopcontroller");
+const { uploadSOP, getSOPs, deleteSOP, reindexSOP } = require("../controllers/sopcontroller");
 
-router.post("/upload", protect, adminOnly, upload.single("file"), uploadSOP);
-const { getSOPs, deleteSOP } = require("../controllers/sopcontroller");
-
-// GET all SOPs
 router.get("/", protect, getSOPs);
-
-// DELETE SOP (admin only)
+router.post("/upload", protect, adminOnly, upload.single("file"), uploadSOP);
 router.delete("/:id", protect, adminOnly, deleteSOP);
+router.post("/reindex/:id", protect, adminOnly, reindexSOP);
 
 module.exports = router;
